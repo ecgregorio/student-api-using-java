@@ -1,6 +1,5 @@
 package com.randomchaffee.student_api.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentService service;
+    StudentService service;
 
     public StudentController(StudentService service) {
         this.service = service;
@@ -34,9 +33,8 @@ public class StudentController {
     
     // add a student
     @PostMapping
-    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student s) {
-        Student created = service.addStudent(s);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    public Student addStudent(@Valid @RequestBody Student s) {
+        return service.addStudent(s);
     }
     
     // update a student

@@ -1,5 +1,6 @@
 package com.randomchaffee.student_api.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.randomchaffee.student_api.exception.StudentNotFoundException;
@@ -10,11 +11,9 @@ import java.util.List;
 
 @Service
 public class StudentService {
-	private final StudentRepository repo;
-
-	public StudentService(StudentRepository repo) {
-		this.repo = repo;
-	}
+	// replace students ArrayList with repository
+	@Autowired
+	StudentRepository repo;
 
     public List<Student> getAll() {
         return repo.findAll();
